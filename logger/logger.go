@@ -35,7 +35,7 @@ func (l *Logger) Error(msg string, err error) {
 	l.infoLogger.Printf("%s: %v", msg, err)
 }
 
-// CLose closes the log file
+// Close closes the log file
 func (l *Logger) Close() {
 	l.file.Close()
 }
