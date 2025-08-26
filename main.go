@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"frontendmasters.com/reelingit/handlers"
 	"frontendmasters.com/reelingit/logger"
 )
 
@@ -14,6 +15,12 @@ func main() {
 	}
 	defer logInstance.Close()
 
+	movieHandler := handlers.MovieHandler{}
+
+	// Handler for top movies dummy data
+	http.HandleFunc("/api/movies/top", movieHandler.GetTopMovies)
+
+	// Handler for static files (frontend)
 	http.Handle("/", http.FileServer(http.Dir("public")))
 
 	const addr = ":8080"
